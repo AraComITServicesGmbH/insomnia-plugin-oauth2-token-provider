@@ -1,6 +1,6 @@
 {
   "name": "insomnia-plugin-oauth2-token-provider",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "insomnia": {
     "name": "OAuth2 Token Provider",
     "description": "This plugin adds a responseHook that handles OAuth2 token responses and provides it for the use in other requests.",

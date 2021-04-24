@@ -4,11 +4,12 @@
 const defaultTokenSuffix = '/oauth2/v2.0/token';
 
 const storage = {
-    tokens: {},
-    getTokenStorage(environment) {
-        return this.tokens[environment.getEnvironmentId()] || {
-            access_token: ''
-        };
+    _tokens: {},
+    getToken(environment) {
+        return this._tokens[environment.getEnvironmentId()] || null;
+    },
+    setToken(environment, token) {
+        this._tokens[environment.getEnvironmentId()] = token;
     }
 }
 
@@ -19,7 +20,7 @@ const tokenTag = {
     args: [],
     async run(arg, regexp, property) {
         console.log('[oauth2-token-provider]', 'get access_token')
-        return storage.getTokenStorage(arg.context).access_token
+        return storage.getToken(arg.context)
     }
 }
 
@@ -32,7 +33,7 @@ const tokenHook = function (arg) {
         const data = JSON.parse(arg.response.getBody().toString('utf-8'))
 
         if (typeof data.access_token !== 'undefined') {
-            storage.getTokenStorage(environment).access_token = data.access_token
+            storage.setToken(environment, data.access_token);
             console.log('[oauth2-token-provider]', 'saved access_token')
         } else {
             console.error('[oauth2-token-provider]', `missing access_token from ${requestURI}`)
