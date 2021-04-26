@@ -1,17 +1,32 @@
 {
   "name": "insomnia-plugin-oauth2-token-provider",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "insomnia": {
-    "name": "OAuth2 Token Provider",
+    "name": "oauth2-token-provider",
+    "displayName": "OAuth2 Token Provider",
     "description": "This plugin adds a responseHook that handles OAuth2 token responses and provides it for the use in other requests.",
+    "images": {
+      "icon": "images/icon.svg"
+    },
     "publisher": {
       "name": "AraCom IT Services AG",
       "icon": "https://avatars.githubusercontent.com/u/83076909?s=200&v=4"
+    },
+    "applications": {
+      "designer": "*",
+      "core": "*",
+      "cli": "*"
     }
   },
   "repository": {
     "url": "git@github.com:AraComITServicesAG/insomnia-plugin-oauth2-token-provider.git"
   },
+  "keywords": [
+    "oauth",
+    "oauth2",
+    "insomnia",
+    "plugin"
+  ],
   "main": "main.js",
   "author": "Christian Ego",
   "license": "MIT"
